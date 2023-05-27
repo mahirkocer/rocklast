@@ -9,17 +9,19 @@
     <h4>Rock-Paper-Scissors</h4>
 
     <button onclick="
-    result(rock)
+    result('rock');
     ">Rock</button>
     <button onclick="
-    result()
+    result('paper');
     ">Paper</button>
-    <button>Scissors</button>
+    <button onclick="
+    result('scissors');
+    ">Scissors</button>
 
     <script>
 
-      function computerMove(){
-        let computerMove ='';
+      function pickComputerMove(){
+          let computerMove ='';
 
           let random = Math.random();
 
@@ -27,14 +29,17 @@
             computerMove = 'rock'
           }else if(random>=1/3 && random<2/3){
             computerMove = 'paper';
-          }else
-          computerMove= 'scissors';
+          }else if(random>=2/3 && random<=1){
+            computerMove= 'scissors';
+          }
+          
           return computerMove;
       }
 
 
       function result(selectedMove){
         let result= '';
+        let computerMove =pickComputerMove();
         if(selectedMove==='paper'){
           if(computerMove==='paper'){
             result='Tie.'
@@ -44,7 +49,6 @@
             result='You lost';
           }
 
-          alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}`);
 
         }else if(selectedMove==='rock'){
           if(computerMove==='paper'){
@@ -55,9 +59,7 @@
             result='You win';
           }
 
-          alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}`);
-
-      }else if(selectedMove==='scissors'){
+       }else if(selectedMove==='scissors'){
           if(computerMove==='paper'){
             result='You win'
           }else if(computerMove==='rock'){
@@ -65,11 +67,10 @@
           }else if(computerMove==='scissors'){
             result='Tie.';
           }
-
-          alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}`);
       
         }
-
+         alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}`);
+      }
 
 
     </script>
