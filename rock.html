@@ -38,6 +38,14 @@
 
 
       function result(selectedMove){
+
+        scoreTable ={
+          wins : 0,
+          loses :0,
+          ties  :0
+        };
+
+
         let result= '';
         let computerMove =pickComputerMove();
         if(selectedMove==='paper'){
@@ -69,7 +77,16 @@
           }
       
         }
-         alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}`);
+
+        if(result==='You win'){
+          scoreTable.wins +=1
+        }else if(result==='You lost'){
+          scoreTable.loses +=1;
+        }else
+        scoreTable.ties +=1;
+
+         alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}
+wins:${scoreTable.wins} loses: ${scoreTable.loses} ties: ${scoreTable.ties}`);
       }
 
 
