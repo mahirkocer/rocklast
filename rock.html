@@ -18,6 +18,10 @@
     result('scissors');
     ">Scissors</button>
 
+    <p class="js-result"></p>
+
+    <p class="js-score"></p>
+
     <button onclick="
     scoreTable ={
           wins : 0,
@@ -96,14 +100,21 @@ let scoreTable=JSON.parse(localStorage.getItem(('score')))||
         }else{
            scoreTable.ties +=1;
         }
-       
 
+      updateScoreElement();
+      resultLast();
         localStorage .setItem('score',JSON.stringify(scoreTable))
 
-         alert(`You selected ${selectedMove} . Computer selected ${computerMove}. ${result}
-wins:${scoreTable.wins} loses: ${scoreTable.loses} ties: ${scoreTable.ties}`);
-      }
+          function updateScoreElement(){
+          document.querySelector('.js-score').innerHTML =`wins:${scoreTable.wins} loses: ${scoreTable.loses} ties: ${scoreTable.ties}`
+        };
+              
 
+        function resultLast(){
+        document.querySelector('.js-result').innerHTML =`${result} \n You ${selectedMove}-${computerMove} computer` 
+              }
+                
+                }
 
     </script>
   </body>
